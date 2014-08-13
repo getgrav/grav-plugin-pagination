@@ -6,7 +6,7 @@
 
 # Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins` and rename the folder to `pagination`.
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `pagination`.
 
 You should now have all the plugin files under
 
