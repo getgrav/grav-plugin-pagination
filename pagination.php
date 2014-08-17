@@ -69,10 +69,8 @@ class PaginationPlugin extends Plugin
             return;
         }
 
-        $twig = Registry::get('Twig');
-
         if ($this->config->get('plugins.pagination.built_in_css')) {
-            $twig->twig_vars['stylesheets'][] = 'user/plugins/pagination/pagination.css';
+            Registry::get('Assets')->add('@plugin/pagination/css:pagination.css');
         }
     }
 }
