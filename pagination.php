@@ -3,8 +3,9 @@ namespace Grav\Plugin;
 
 use Grav\Common\Grav;
 use Grav\Common\Page\Collection;
+use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
-use Grav\Common\Registry;
+use Grav\Component\EventDispatcher\Event;
 
 class PaginationPlugin extends Plugin
 {
@@ -14,16 +15,21 @@ class PaginationPlugin extends Plugin
     protected $pagination;
 
     /**
-     * @var bool
+     * @return array
      */
-    protected $active = false;
+    public static function getSubscribedEvents() {
+        return [
+            'onAfterTwigTemplatesPaths' => ['onAfterTwigTemplatesPaths', 0],
+            'onAfterGetPage' => ['onAfterGetPage', 0],
+        ];
+    }
 
     /**
      * Add current directory to twig lookup paths.
      */
     public function onAfterTwigTemplatesPaths()
     {
-        Registry::get('Twig')->twig_paths[] = __DIR__ . '/templates';
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 
     /**
@@ -31,25 +37,30 @@ class PaginationPlugin extends Plugin
      */
     public function onAfterGetPage()
     {
-        /** @var Grav $grav */
-        $grav = Registry::get('Grav');
+        /** @var Page $page */
+        $page = $this->grav['page'];
 
-        if ($grav->page) {
-            $this->active = $grav->page->value('header.pagination');
+        if ($page && $page->value('header.pagination')) {
+            $this->enable([
+                'onAfterCollectionProcessed' => ['onAfterCollectionProcessed', 0],
+                'onAfterTwigSiteVars' => ['onAfterTwigSiteVars', 0]
+            ]);
         }
     }
 
     /**
      * Create pagination object for the page.
      *
-     * @param Collection $collection
+     * @param Event $event
      */
-    public function onAfterCollectionProcessed(Collection $collection)
+    public function onAfterCollectionProcessed(Event $event)
     {
+        /** @var Collection $collection */
+        $collection = $event['collection'];
         $params = $collection->params();
 
         // Only add pagination if it has been enabled for the collection.
-        if (!$this->active || empty($params['pagination'])) {
+        if (empty($params['pagination'])) {
             return;
         }
 
@@ -65,12 +76,8 @@ class PaginationPlugin extends Plugin
      */
     public function onAfterTwigSiteVars()
     {
-        if (!$this->active) {
-            return;
-        }
-
         if ($this->config->get('plugins.pagination.built_in_css')) {
-            Registry::get('Assets')->add('@plugin/pagination/css:pagination.css');
+            $this->grav['assets']->add('@plugin/pagination/css:pagination.css');
         }
     }
 }
