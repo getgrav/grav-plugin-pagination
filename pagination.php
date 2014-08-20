@@ -77,7 +77,7 @@ class PaginationPlugin extends Plugin
     public function onTwigSiteVariables()
     {
         if ($this->config->get('plugins.pagination.built_in_css')) {
-            $this->grav['assets']->add('@plugin/pagination/css:pagination.css');
+            $this->grav['assets']->add('plugin://pagination/css/pagination.css');
         }
     }
 }
