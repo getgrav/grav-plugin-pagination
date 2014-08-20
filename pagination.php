@@ -19,15 +19,15 @@ class PaginationPlugin extends Plugin
      */
     public static function getSubscribedEvents() {
         return [
-            'onAfterTwigTemplatesPaths' => ['onAfterTwigTemplatesPaths', 0],
-            'onAfterGetPage' => ['onAfterGetPage', 0],
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onPageInitialized' => ['onPageInitialized', 0],
         ];
     }
 
     /**
      * Add current directory to twig lookup paths.
      */
-    public function onAfterTwigTemplatesPaths()
+    public function onTwigTemplatePaths()
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
@@ -35,15 +35,15 @@ class PaginationPlugin extends Plugin
     /**
      * Enable pagination if page has params.pagination = true.
      */
-    public function onAfterGetPage()
+    public function onPageInitialized()
     {
         /** @var Page $page */
         $page = $this->grav['page'];
 
         if ($page && $page->value('header.pagination')) {
             $this->enable([
-                'onAfterCollectionProcessed' => ['onAfterCollectionProcessed', 0],
-                'onAfterTwigSiteVars' => ['onAfterTwigSiteVars', 0]
+                'onCollectionProcessed' => ['onCollectionProcessed', 0],
+                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
             ]);
         }
     }
@@ -53,7 +53,7 @@ class PaginationPlugin extends Plugin
      *
      * @param Event $event
      */
-    public function onAfterCollectionProcessed(Event $event)
+    public function onCollectionProcessed(Event $event)
     {
         /** @var Collection $collection */
         $collection = $event['collection'];
@@ -74,7 +74,7 @@ class PaginationPlugin extends Plugin
     /**
      * Set needed variables to display pagination.
      */
-    public function onAfterTwigSiteVars()
+    public function onTwigSiteVariables()
     {
         if ($this->config->get('plugins.pagination.built_in_css')) {
             $this->grav['assets']->add('@plugin/pagination/css:pagination.css');

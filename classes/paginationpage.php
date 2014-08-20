@@ -2,9 +2,12 @@
 namespace Grav\Plugin;
 
 use \Grav\Common\Registry;
+use \Grav\Common\GravTrait;
 
 class PaginationPage
 {
+    use GravTrait;
+
     /**
      * @var int
      */
@@ -34,7 +37,7 @@ class PaginationPage
      */
     public function isCurrent()
     {
-        if (Registry::get('Uri')->currentPage() == $this->number) {
+        if (self::$grav['uri']->currentPage() == $this->number) {
             return true;
         } else {
             return false;

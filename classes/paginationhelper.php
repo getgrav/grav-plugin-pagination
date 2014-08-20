@@ -3,10 +3,12 @@ namespace Grav\Plugin;
 
 use Grav\Common\Iterator;
 use Grav\Common\Page\Collection;
-use Grav\Common\Registry;
+use Grav\Common\GravTrait;
 
 class PaginationHelper extends Iterator
 {
+    use GravTrait;
+
     protected $current;
     protected $items_per_page;
     protected $page_count;
@@ -22,7 +24,7 @@ class PaginationHelper extends Iterator
 
         $params = $collection->params();
 
-        $uri = Registry::get('Uri');
+        $uri = self::$grav['uri'];
         $this->current = $uri->currentPage();
 
         $this->items_per_page = $params['limit'];
