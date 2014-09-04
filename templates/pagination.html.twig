@@ -2,7 +2,7 @@
 
 <ul class="pagination">
     {% if pagination.hasPrev %}
-        <li><a href="{{ base_url }}{{ pagination.prev_url }}">&laquo;</a></li>
+        <li><a href="{{ base_url }}{{ pagination.prevUrl }}">&laquo;</a></li>
     {% else %}
         <li><span>&laquo;</span></li>
     {% endif %}
@@ -17,7 +17,7 @@
 
     {% endfor %}
     {% if pagination.hasNext %}
-        <li><a href="{{ base_url }}{{ pagination.next_url }}">&raquo;</a></li>
+        <li><a href="{{ base_url }}{{ pagination.nextUrl }}">&raquo;</a></li>
     {% else %}
         <li><span>&raquo;</span></li>
     {% endif %}
