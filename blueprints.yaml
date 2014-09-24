@@ -1,6 +1,16 @@
 name: Pagination Plugin
 version: 1.1.1
-description: This is a simple but powerful plugin for Grav.
+description: "*Pagination* is a very useful plugin to help navigate a large collection of pages, such as for a *blog*."
+icon: chevron-circle-right
+author:
+  name: Team Grav
+  email: devs@getgrav.org
+  url: http://getgrav.org
+homepage: https://github.com/getgrav/grav-plugin-pagination
+keywords: pagination, plugin, pages, navigation
+bugs: https://github.com/getgrav/grav-plugin-pagination/issues
+license: MIT
+
 validation: strict
 
 form:
