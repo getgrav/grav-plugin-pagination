@@ -4,6 +4,7 @@ namespace Grav\Plugin;
 use Grav\Common\Iterator;
 use Grav\Common\Page\Collection;
 use Grav\Common\GravTrait;
+use Grav\Common\Uri;
 
 class PaginationHelper extends Iterator
 {
@@ -24,6 +25,7 @@ class PaginationHelper extends Iterator
 
         $params = $collection->params();
 
+        /** @var Uri $uri */
         $uri = self::$grav['uri'];
         $this->current = $uri->currentPage();
 
