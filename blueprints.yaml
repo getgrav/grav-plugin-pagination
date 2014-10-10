@@ -11,9 +11,8 @@ keywords: pagination, plugin, pages, navigation
 bugs: https://github.com/getgrav/grav-plugin-pagination/issues
 license: MIT
 
-validation: strict
-
 form:
+  validation: strict
   fields:
     enabled:
       type: toggle
