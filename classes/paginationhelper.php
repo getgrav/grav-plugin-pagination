@@ -14,6 +14,8 @@ class PaginationHelper extends Iterator
     protected $items_per_page;
     protected $page_count;
 
+    protected $url_params;
+
     /**
      * Create and initialize pagination.
      *
@@ -23,12 +25,22 @@ class PaginationHelper extends Iterator
     {
         require_once __DIR__ . '/paginationpage.php';
 
-        $params = $collection->params();
+
 
         /** @var Uri $uri */
         $uri = self::$grav['uri'];
         $this->current = $uri->currentPage();
 
+        // get params
+        $url_params = explode('/', ltrim($uri->params(),'/'));
+        foreach ($url_params as $key=>$value) {
+            if (strpos($value,'page:') !== false) {
+                unset($url_params[$key]);
+            }
+        }
+        $this->url_params = '/'.implode('/',$url_params);
+
+        $params = $collection->params();
         $this->items_per_page = $params['limit'];
         $this->page_count = ceil($collection->count() / $this->items_per_page);
 
@@ -91,5 +103,10 @@ class PaginationHelper extends Iterator
         }
 
         return null;
+    }
+
+    public function params()
+    {
+        return $this->url_params;
     }
 }
