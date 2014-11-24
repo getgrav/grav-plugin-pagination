@@ -32,13 +32,18 @@ class PaginationHelper extends Iterator
         $this->current = $uri->currentPage();
 
         // get params
-        $url_params = explode('/', ltrim($uri->params(),'/'));
-        foreach ($url_params as $key=>$value) {
-            if (strpos($value,'page:') !== false) {
+        $url_params = explode('/', ltrim($uri->params(), '/'));
+        foreach ($url_params as $key => $value) {
+            if (strpos($value, 'page:') !== false) {
                 unset($url_params[$key]);
             }
         }
-        $this->url_params = '/'.implode('/',$url_params);
+        $this->url_params = '/'.implode('/', $url_params);
+
+        // check for empty params
+        if ($this->url_params == '/') {
+            $this->url_params = '';
+        }
 
         $params = $collection->params();
         $this->items_per_page = $params['limit'];
