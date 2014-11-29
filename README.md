@@ -14,6 +14,19 @@ You should now have all the plugin files under
 
 >> NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav), the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) plugins, and a theme to be installed in order to operate.
 
+# Config Defaults
+
+```
+enabled: true
+path: /blog
+built_in_css: true
+delta: 0
+```
+
+The 'delta' value controls how many pages left and right of the current page are visible. If set to 0 all pages will be shown. 
+
+If you need to change any value, then the best process is to copy the [pagination.yaml](pagination.yaml) file into your `users/config/plugins/` folder (create it if it doesn't exist), and then modify there.  This will override the default settings.
+
 # Usage
 
 To use `pagination`, you need a blog-like structured page. Then, at the header of the main page, you will add the `pagination: true` setting.
