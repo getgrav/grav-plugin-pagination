@@ -14,7 +14,7 @@
         {% elseif paginate.isInDelta %}
             <li><a href="{{ base_url }}{{ pagination.params }}{{ paginate.url }}">{{ paginate.number }}</a></li>
         {% elseif paginate.isDeltaBorder %}
-            <li class="gap">...</li>
+            <li class="gap"><span>&hellip;</span></li>
         {% endif %}
 
     {% endfor %}
