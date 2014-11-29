@@ -11,8 +11,10 @@
 
         {% if paginate.isCurrent %}
             <li><span>{{ paginate.number }}</span></li>
-        {% else %}
+        {% elseif paginate.isInDelta %}
             <li><a href="{{ base_url }}{{ pagination.params }}{{ paginate.url }}">{{ paginate.number }}</a></li>
+        {% elseif paginate.isDeltaBorder %}
+            <li class="gap">...</li>
         {% endif %}
 
     {% endfor %}
