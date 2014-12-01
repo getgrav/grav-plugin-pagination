@@ -17,11 +17,10 @@ class PaginationPlugin extends Plugin
     /**
      * @return array
      */
-    public static function getSubscribedEvents() {
+    public static function getSubscribedEvents()
+    {
         return [
-            'onPluginsInitialized' => ['onPluginsInitialized', 0],
-            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onPageInitialized' => ['onPageInitialized', 0],
+            'onPluginsInitialized' => ['onPluginsInitialized', 0]
         ];
     }
 
@@ -32,7 +31,13 @@ class PaginationPlugin extends Plugin
     {
         if ($this->isAdmin()) {
             $this->active = false;
+            return;
         }
+
+        $this->enable([
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onPageInitialized' => ['onPageInitialized', 0]
+        ]);
     }
 
     /**
@@ -40,8 +45,6 @@ class PaginationPlugin extends Plugin
      */
     public function onTwigTemplatePaths()
     {
-        if (!$this->active) return;
-
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 
@@ -50,8 +53,6 @@ class PaginationPlugin extends Plugin
      */
     public function onPageInitialized()
     {
-        if (!$this->active) return;
-
         /** @var Page $page */
         $page = $this->grav['page'];
 
@@ -70,8 +71,6 @@ class PaginationPlugin extends Plugin
      */
     public function onCollectionProcessed(Event $event)
     {
-        if (!$this->active) return;
-
         /** @var Collection $collection */
         $collection = $event['collection'];
         $params = $collection->params();
@@ -93,8 +92,6 @@ class PaginationPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        if (!$this->active) return;
-
         if ($this->config->get('plugins.pagination.built_in_css')) {
             $this->grav['assets']->add('plugin://pagination/css/pagination.css');
         }
