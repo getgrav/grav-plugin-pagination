@@ -4,7 +4,7 @@
 2. [](#improved)
     * NOTE: BREAKING CHANGE: Moved templates into `partials/` subfolder for consistency.
 
-# v1.2.0
+# v1.2.1
 ## 11/30/2014
 
 1. [](#new)
