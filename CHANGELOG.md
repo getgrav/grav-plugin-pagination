@@ -1,3 +1,9 @@
+# v1.2.3
+## 01/23/2015
+
+2. [](#improved)
+    * Added microdata information for links
+
 # v1.2.2
 ## 01/09/2015
 
