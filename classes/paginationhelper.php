@@ -28,7 +28,7 @@ class PaginationHelper extends Iterator
 
 
         /** @var Uri $uri */
-        $uri = self::$grav['uri'];
+        $uri = self::getGrav()['uri'];
         $this->current = $uri->currentPage();
 
         // get params
