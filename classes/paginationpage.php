@@ -32,7 +32,7 @@ class PaginationPage
     {
         $this->number = $number;
         $this->url = $url;
-        $this->delta = self::$grav['config']->get('plugins.pagination.delta');
+        $this->delta = self::getGrav()['config']->get('plugins.pagination.delta');
     }
 
     /**
@@ -42,7 +42,7 @@ class PaginationPage
      */
     public function isCurrent()
     {
-        if (self::$grav['uri']->currentPage() == $this->number) {
+        if (self::getGrav()['uri']->currentPage() == $this->number) {
             return true;
         } else {
             return false;
@@ -59,7 +59,7 @@ class PaginationPage
         if (!$this->delta) {
             return true;
         } else {
-            return abs(self::$grav['uri']->currentPage() - $this->number) < $this->delta;
+            return abs(self::getGrav()['uri']->currentPage() - $this->number) < $this->delta;
         }
     }
 
@@ -74,7 +74,7 @@ class PaginationPage
         if (!$this->delta) {
             return false;
         } else {
-            return abs(self::$grav['uri']->currentPage() - $this->number) == $this->delta;
+            return abs(self::getGrav()['uri']->currentPage() - $this->number) == $this->delta;
         }
     }
 }
