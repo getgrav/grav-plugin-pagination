@@ -1,3 +1,9 @@
+# v1.2.4
+## 02/05/2015
+
+2. [](#improved)
+    * Added support for HHVM
+
 # v1.2.3
 ## 01/23/2015
 
