@@ -25,16 +25,15 @@ class PaginationHelper extends Iterator
     {
         require_once __DIR__ . '/paginationpage.php';
 
-
-
         /** @var Uri $uri */
         $uri = self::getGrav()['uri'];
+        $config = self::getGrav()['config'];
         $this->current = $uri->currentPage();
 
         // get params
         $url_params = explode('/', ltrim($uri->params(), '/'));
         foreach ($url_params as $key => $value) {
-            if (strpos($value, 'page:') !== false) {
+            if (strpos($value, 'page' . $config->get('system.param_sep')) !== false) {
                 unset($url_params[$key]);
             }
         }
@@ -50,7 +49,7 @@ class PaginationHelper extends Iterator
         $this->page_count = ceil($collection->count() / $this->items_per_page);
 
         for ($x=1; $x <= $this->page_count; $x++) {
-            $this->items[$x] = new PaginationPage($x, '/page:'.$x);
+            $this->items[$x] = new PaginationPage($x, '/page' . $config->get('system.param_sep') . $x);
         }
     }
 
