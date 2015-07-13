@@ -56,7 +56,7 @@ class PaginationPlugin extends Plugin
         /** @var Page $page */
         $page = $this->grav['page'];
 
-        if ($page && $page->value('header.pagination')) {
+        if ($page && ($page->value('header.content.pagination') || $page->value('header.pagination'))) {
             $this->enable([
                 'onCollectionProcessed' => ['onCollectionProcessed', 0],
                 'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
