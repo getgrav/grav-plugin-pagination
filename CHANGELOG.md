@@ -1,3 +1,9 @@
+# v1.2.6
+## 02/19/2015
+
+2. [](#improved)
+    * no `/page:1` for first page in pagination set
+
 # v1.2.5
 ## 02/19/2015
 
