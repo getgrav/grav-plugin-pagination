@@ -61,6 +61,11 @@ class PaginationPlugin extends Plugin
                 'onCollectionProcessed' => ['onCollectionProcessed', 0],
                 'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
             ]);
+
+            $template = $this->grav['uri']->param('tmpl');
+            if ($template) {
+                $page->template($template);
+            }
         }
     }
 
