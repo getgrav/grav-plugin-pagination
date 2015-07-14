@@ -1,5 +1,13 @@
+# v1.2.7
+## 07/13/2015
+
+1. [](#new)
+	* Added ability to provide `/tmpl:template_name` parameter to pagination URL
+2. [](#improved)
+    * Allow checking of `header.content.pagination` **or** `header.pagination` to activate
+
 # v1.2.6
-## 02/19/2015
+## 07/12/2015
 
 2. [](#improved)
     * no `/page:1` for first page in pagination set
