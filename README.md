@@ -18,7 +18,6 @@ You should now have all the plugin files under
 
 ```
 enabled: true
-path: /blog
 built_in_css: true
 delta: 0
 ```
