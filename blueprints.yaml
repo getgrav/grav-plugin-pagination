@@ -25,6 +25,16 @@ form:
       validate:
         type: bool
 
+    delta:
+        type: text
+        size: x-small
+        label: Delta (How many pages to show left and right of the current page)
+        default: 0
+        help: The 'delta' value controls how many pages left and right of the current page are visible. If set to 0 all pages will be shown.
+        validate:
+          type: number
+          min: 0
+
     built_in_css:
       type: toggle
       label: Use built in CSS
