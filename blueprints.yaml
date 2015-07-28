@@ -28,9 +28,9 @@ form:
     delta:
         type: text
         size: x-small
-        label: Delta (How many pages to show left and right of the current page)
+        label: Delta
         default: 0
-        help: The 'delta' value controls how many pages left and right of the current page are visible. If set to 0 all pages will be shown.
+        help: How many pages to show left and right of the current page
         validate:
           type: number
           min: 0
