@@ -50,7 +50,7 @@ class PaginationHelper extends Iterator
 
         for ($x=1; $x <= $this->page_count; $x++) {
             if ($x === 1) {
-                $this->items[$x] = new PaginationPage($x, '/');
+                $this->items[$x] = new PaginationPage($x, '');
             } else {
                 $this->items[$x] = new PaginationPage($x, '/page' . $config->get('system.param_sep') . $x);
             }
