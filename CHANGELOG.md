@@ -1,3 +1,9 @@
+# v1.3.1
+## 08/29/2015
+
+1. [](#bugfix)
+    * Fixed pagination URLs in certain situations
+
 # v1.3.0
 ## 08/25/2015
 
