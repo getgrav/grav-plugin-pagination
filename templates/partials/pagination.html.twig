@@ -1,5 +1,7 @@
 {% if pagination|length > 1 %}
 
+{% set base_url = base_url != '/' ? base_url : '' %}
+
 <ul class="pagination">
     {% if pagination.hasPrev %}
         <li><a rel="prev" href="{{ base_url }}{{ pagination.params }}{{ pagination.prevUrl }}">&laquo;</a></li>
