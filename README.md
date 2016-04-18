@@ -50,3 +50,6 @@ If you want to override the look and feel of the pagination, copy the template f
 ```
 
 You can now edit the override and tweak it to meet your needs.
+
+[pagination]: templates/pagination.html.twig
+[grav]: http://github.com/getgrav/grav
