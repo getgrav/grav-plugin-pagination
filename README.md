@@ -1,7 +1,7 @@
 # Grav Pagination Plugin
 
 
-`Pagination` is a [Grav][grav] Plugin that allows to divide articles into discrete pages. 
+`Pagination` is a [Grav][grav] Plugin that allows to divide articles into discrete pages.
 
 
 # Installation
@@ -22,7 +22,7 @@ built_in_css: true
 delta: 0
 ```
 
-The 'delta' value controls how many pages left and right of the current page are visible. If set to 0 all pages will be shown. 
+The 'delta' value controls how many pages left and right of the current page are visible. If set to 0 all pages will be shown.
 
 If you need to change any value, then the best process is to copy the [pagination.yaml](pagination.yaml) file into your `users/config/plugins/` folder (create it if it doesn't exist), and then modify there.  This will override the default settings.
 
@@ -41,13 +41,12 @@ pagination: true
 ## A tale of **awesomazing** adventures
 ```
 
+### Override the pagination HTML
+
 If you want to override the look and feel of the pagination, copy the template file [pagination.html.twig][pagination] into the templates folder of your custom theme and that is it.
 
 ```
-/your/site/grav/user/themes/custom-theme/templates/pagination.html.twig
+/your/site/grav/user/themes/custom-theme/templates/partials/pagination.html.twig
 ```
 
 You can now edit the override and tweak it to meet your needs.
-
-[pagination]: templates/pagination.html.twig
-[grav]: http://github.com/getgrav/grav
