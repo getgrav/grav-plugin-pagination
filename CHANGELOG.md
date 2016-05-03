@@ -1,3 +1,13 @@
+# v1.3.2
+## 05/03/2016
+
+1. [](#new)
+    * Added default pagination to `page.collection.params.pagination` and `base_url` to `page.url`
+1. [](#improved)
+    * Use common lang strings in blueprints    
+1. [](#bugfix)
+    * Improved and fixed README.md
+    
 # v1.3.1
 ## 08/29/2015
 
