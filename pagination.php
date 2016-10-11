@@ -101,4 +101,30 @@ class PaginationPlugin extends Plugin
             $this->grav['assets']->add('plugin://pagination/css/pagination.css');
         }
     }
+
+    /**
+     * support for twig pagination
+     *
+     * @param collection $collection
+     * @param $limit
+     */
+    public function paginateCollection( $collection, $limit, $ignore_url_params = false )
+    {
+        $collection->setParams(['pagination' => 'true']);
+        $collection->setParams(['limit' => $limit]);
+        $collection->setParams(['ignore_url_params' => $ignore_url_params]);
+
+        if ($collection->count() > $limit) {
+            require_once __DIR__ . '/classes/paginationhelper.php';
+            $this->pagination = new PaginationHelper($collection);
+            $collection->setParams(['pagination' => $this->pagination]);
+
+            $uri = $this->grav['uri'];
+            $start = ($uri->currentPage() - 1) * $limit;
+
+            if ($limit && $collection->count() > $limit) {
+                $collection->slice($start, $limit);
+            }
+        }
+    }
 }
