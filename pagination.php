@@ -6,6 +6,7 @@ use Grav\Common\Page\Collection;
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
+use Grav\Common\Uri;
 
 class PaginationPlugin extends Plugin
 {
@@ -36,7 +37,8 @@ class PaginationPlugin extends Plugin
 
         $this->enable([
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onPageInitialized' => ['onPageInitialized', 0]
+            'onPageInitialized' => ['onPageInitialized', 0],
+            'onTwigExtensions' => ['onTwigExtensions', 0]
         ]);
     }
 
@@ -46,6 +48,15 @@ class PaginationPlugin extends Plugin
     public function onTwigTemplatePaths()
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+    }
+
+    /**
+     * Add Twig Extensions
+     */
+    public function onTwigExtensions()
+    {
+        require_once(__DIR__.'/twig/PaginationTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new PaginationTwigExtension());
     }
 
     /**
@@ -103,7 +114,7 @@ class PaginationPlugin extends Plugin
     }
 
     /**
-     * support for twig pagination
+     * pagination
      *
      * @param collection $collection
      * @param $limit
