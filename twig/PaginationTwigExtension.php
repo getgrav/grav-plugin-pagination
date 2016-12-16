@@ -35,8 +35,8 @@ class PaginationTwigExtension extends \Twig_Extension
         ];
     }
 
-    public function paginateFunc($collection, $limit, $ignore_url_params) {
+    public function paginateFunc($collection, $limit, $ignore_url_param_array = []) {
         $pag = new PaginationPlugin($this, Grav::instance(), $this->config);
-        $pag->paginateCollection($collection, $limit, $ignore_url_params);
+        $pag->paginateCollection($collection, $limit, $ignore_url_param_array);
     }
 }
