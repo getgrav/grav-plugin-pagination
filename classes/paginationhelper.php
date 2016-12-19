@@ -39,9 +39,11 @@ class PaginationHelper extends Iterator
             if (strpos($value, 'page' . $config->get('system.param_sep')) !== false) {
                 unset($url_params[$key]);
             }
-            foreach ((array)$params['ignore_params'] as $ignore_param) {
-                if (strpos($value, $ignore_param . $config->get('system.param_sep')) !== false) {
-                    unset($url_params[$key]);
+            if (isset($params['ignore_url_params'])) {
+                foreach ((array)$params['ignore_params'] as $ignore_param) {
+                    if (strpos($value, $ignore_param . $config->get('system.param_sep')) !== false) {
+                        unset($url_params[$key]);
+                    }
                 }
             }
         }
