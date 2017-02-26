@@ -113,7 +113,7 @@ It is now possible to create paginated collections on demand in your twig file. 
 
 ### Basic usage
 
-```
+```twig
 {% set collection = << some collection >> %}
 {% set limit = << number of items per page >> %}
 {% do paginate( collection, limit ) %}
@@ -123,7 +123,7 @@ This creates a paginated collection with << limit >> items per page. As usual, a
 
 ### Extended usage
 
-```
+```twig
 {% set collection = page.find( '/other/_events' ).children %}
 {% set limit = 5 %}
 {% set ignore_url_param_array = [ 'event' ] %}
@@ -136,7 +136,7 @@ The above example is taken from http://ami-web.nl/events. This code creates a pa
 
 The rest is identical to the standard procedure.
 
-```
+```twig
 {# create list of items #}
 {% for item in collection %}
    ...
