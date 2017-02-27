@@ -32,11 +32,22 @@ class PaginationHelper extends Iterator
 
         // get params
         $url_params = explode('/', ltrim($uri->params(), '/'));
+
+        $params = $collection->params();
+
         foreach ($url_params as $key => $value) {
             if (strpos($value, 'page' . $config->get('system.param_sep')) !== false) {
                 unset($url_params[$key]);
             }
+            if (isset($params['ignore_url_params'])) {
+                foreach ((array)$params['ignore_params'] as $ignore_param) {
+                    if (strpos($value, $ignore_param . $config->get('system.param_sep')) !== false) {
+                        unset($url_params[$key]);
+                    }
+                }
+            }
         }
+
         $this->url_params = '/'.implode('/', $url_params);
 
         // check for empty params
@@ -44,7 +55,6 @@ class PaginationHelper extends Iterator
             $this->url_params = '';
         }
 
-        $params = $collection->params();
         $this->items_per_page = $params['limit'];
         $this->page_count = ceil($collection->count() / $this->items_per_page);
 
