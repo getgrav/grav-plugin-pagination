@@ -136,19 +136,6 @@ The above example is taken from http://ami-web.nl/events. This code creates a pa
 
 ### Rendering the paginated collection
 
-The rest is identical to the standard procedure.
-
-```twig
-{% set collection = page.find('/other/_events').children %}
-{% set limit = 5 %}
-{% set ignore_url_param_array = ['event'] %}
-{% do paginate(collection, limit, ignore_url_param_array) %}
-```
-
-The above example is taken from http://ami-web.nl/events. This code creates a paginated collection with 5 items per page (the event summary list) which is presented together with an active event. The active event appears in only one of the summary pages. Consequently, the url parameter `event` should be filtered out so it does not show up in the pagination bar's links, preventing inconsistencies with different page parameters. Any non listed url parameters (except the page parameter) are passed through unaffected. The requested page contains logic to pick a sensible default event.
-
-## Rendering the paginated collection
-
 The rest is identical to the standard procedure:
 
 ```twig
