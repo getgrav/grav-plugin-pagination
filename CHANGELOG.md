@@ -1,6 +1,8 @@
-# v1.3.3
+# v1.4.0
 ## mm/dd/2017
 
+1. [](#new)
+    * Added Twig pagination function [#22](https://github.com/getgrav/grav-plugin-pagination/pull/22)
 1. [](#improved)
     * Removed Grav trait in favor of `Grav::instance()`
     * Changed delta blueprint type from `text` to `number`
