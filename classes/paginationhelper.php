@@ -1,14 +1,13 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Grav;
 use Grav\Common\Iterator;
 use Grav\Common\Page\Collection;
-use Grav\Common\GravTrait;
 use Grav\Common\Uri;
 
 class PaginationHelper extends Iterator
 {
-    use GravTrait;
 
     protected $current;
     protected $items_per_page;
@@ -25,9 +24,11 @@ class PaginationHelper extends Iterator
     {
         require_once __DIR__ . '/paginationpage.php';
 
+        $grav = Grav::instance();
+
         /** @var Uri $uri */
-        $uri = self::getGrav()['uri'];
-        $config = self::getGrav()['config'];
+        $uri = $grav['uri'];
+        $config = $grav['config'];
         $this->current = $uri->currentPage();
 
         // get params

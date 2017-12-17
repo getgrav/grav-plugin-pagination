@@ -1,3 +1,10 @@
+# v1.3.3
+## mm/dd/2017
+
+1. [](#improved)
+    * Removed Grav trait in favor of `Grav::instance()`
+    * Changed delta blueprint type from `text` to `number`
+ 
 # v1.3.2
 ## 05/03/2016
 
