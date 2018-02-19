@@ -1,12 +1,10 @@
 <?php
 namespace Grav\Plugin;
 
-use Grav\Common\Grav;
 use Grav\Common\Page\Collection;
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
-use Grav\Common\Uri;
 
 class PaginationPlugin extends Plugin
 {
@@ -56,6 +54,7 @@ class PaginationPlugin extends Plugin
     public function onTwigExtensions()
     {
         require_once(__DIR__.'/twig/PaginationTwigExtension.php');
+
         $this->grav['twig']->twig->addExtension(new PaginationTwigExtension());
     }
 
@@ -116,9 +115,9 @@ class PaginationPlugin extends Plugin
     /**
      * pagination
      *
-     * @param collection $collection
-     * @param $limit
-     * @param $ignore_param_array      url parameters to be ignored in page links
+     * @param Collection $collection
+     * @param int $limit
+     * @param array $ignore_param_array      url parameters to be ignored in page links
      */
     public function paginateCollection( $collection, $limit, $ignore_param_array = [])
     {

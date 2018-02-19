@@ -8,7 +8,6 @@ use Grav\Common\Uri;
 
 class PaginationHelper extends Iterator
 {
-
     protected $current;
     protected $items_per_page;
     protected $page_count;
@@ -22,6 +21,8 @@ class PaginationHelper extends Iterator
      */
     public function __construct(Collection $collection)
     {
+        parent::__construct();
+
         require_once __DIR__ . '/paginationpage.php';
 
         $grav = Grav::instance();
@@ -52,7 +53,7 @@ class PaginationHelper extends Iterator
         $this->url_params = '/'.implode('/', $url_params);
 
         // check for empty params
-        if ($this->url_params == '/') {
+        if ($this->url_params === '/') {
             $this->url_params = '';
         }
 
@@ -77,9 +78,9 @@ class PaginationHelper extends Iterator
     {
         if (array_key_exists($this->current -1, $this->items)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -91,9 +92,9 @@ class PaginationHelper extends Iterator
     {
         if (array_key_exists($this->current +1, $this->items)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**

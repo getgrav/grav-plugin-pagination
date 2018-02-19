@@ -1,10 +1,15 @@
 <?php
 namespace Grav\Plugin;
 
-use \Grav\Common\Grav;
+use Grav\Common\Grav;
 
 class PaginationPage
 {
+    /**
+     * @var Grav
+     */
+    protected $grav;
+
     /**
      * @var int
      */
@@ -28,9 +33,10 @@ class PaginationPage
      */
     public function __construct($number, $url)
     {
+        $this->grav = Grav::instance();
         $this->number = $number;
         $this->url = $url;
-        $this->delta = Grav::instance()['config']->get('plugins.pagination.delta');
+        $this->delta = $this->grav['config']->get('plugins.pagination.delta');
     }
 
     /**
@@ -40,11 +46,11 @@ class PaginationPage
      */
     public function isCurrent()
     {
-        if (Grav::instance()['uri']->currentPage() == $this->number) {
+        if ($this->grav['uri']->currentPage() == $this->number) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -56,9 +62,9 @@ class PaginationPage
     {
         if (!$this->delta) {
             return true;
-        } else {
-            return abs(Grav::instance()['uri']->currentPage() - $this->number) < $this->delta;
         }
+
+        return abs($this->grav['uri']->currentPage() - $this->number) < $this->delta;
     }
 
     /**
@@ -71,8 +77,8 @@ class PaginationPage
     {
         if (!$this->delta) {
             return false;
-        } else {
-            return abs(Grav::instance()['uri']->currentPage() - $this->number) == $this->delta;
         }
+
+        return abs($this->grav['uri']->currentPage() - $this->number) == $this->delta;
     }
 }

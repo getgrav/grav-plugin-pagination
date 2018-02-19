@@ -6,7 +6,8 @@
 1. [](#improved)
     * Removed Grav trait in favor of `Grav::instance()`
     * Changed delta blueprint type from `text` to `number`
- 
+    * Code cleanup
+    
 # v1.3.2
 ## 05/03/2016
 
