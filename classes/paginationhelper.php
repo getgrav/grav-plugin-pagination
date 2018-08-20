@@ -1,15 +1,13 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Grav;
 use Grav\Common\Iterator;
 use Grav\Common\Page\Collection;
-use Grav\Common\GravTrait;
 use Grav\Common\Uri;
 
 class PaginationHelper extends Iterator
 {
-    use GravTrait;
-
     protected $current;
     protected $items_per_page;
     protected $page_count;
@@ -23,28 +21,42 @@ class PaginationHelper extends Iterator
      */
     public function __construct(Collection $collection)
     {
+        parent::__construct();
+
         require_once __DIR__ . '/paginationpage.php';
 
+        $grav = Grav::instance();
+
         /** @var Uri $uri */
-        $uri = self::getGrav()['uri'];
-        $config = self::getGrav()['config'];
+        $uri = $grav['uri'];
+        $config = $grav['config'];
         $this->current = $uri->currentPage();
 
         // get params
         $url_params = explode('/', ltrim($uri->params(), '/'));
+
+        $params = $collection->params();
+
         foreach ($url_params as $key => $value) {
             if (strpos($value, 'page' . $config->get('system.param_sep')) !== false) {
                 unset($url_params[$key]);
             }
+            if (isset($params['ignore_url_params'])) {
+                foreach ((array)$params['ignore_params'] as $ignore_param) {
+                    if (strpos($value, $ignore_param . $config->get('system.param_sep')) !== false) {
+                        unset($url_params[$key]);
+                    }
+                }
+            }
         }
+
         $this->url_params = '/'.implode('/', $url_params);
 
         // check for empty params
-        if ($this->url_params == '/') {
+        if ($this->url_params === '/') {
             $this->url_params = '';
         }
 
-        $params = $collection->params();
         $this->items_per_page = $params['limit'];
         $this->page_count = ceil($collection->count() / $this->items_per_page);
 
@@ -66,9 +78,9 @@ class PaginationHelper extends Iterator
     {
         if (array_key_exists($this->current -1, $this->items)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -80,9 +92,9 @@ class PaginationHelper extends Iterator
     {
         if (array_key_exists($this->current +1, $this->items)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**

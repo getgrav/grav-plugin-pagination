@@ -99,3 +99,66 @@ You can now edit the override and tweak it to meet your needs.
 
 [pagination]: templates/partials/pagination.html.twig
 [grav]: http://github.com/getgrav/grav
+
+# Twig pagination function
+
+It is now possible to create paginated collections on demand in your twig file. You only need to:
+
+* activate the pagination plugin
+* pick or create the collection you want
+* paginate it
+* render the paginated collection
+
+## Creating a paginated collection
+
+### Basic usage
+
+```twig
+{# some collection #}
+{% set collection = page.collection() %}
+{# number of items per page #}
+{% set limit = 5 %}
+{% do paginate( collection, limit ) %}
+```
+
+This creates a paginated collection with `limit` items per page. As usual, any url parameters - except the page parameter, which is recreated - are passed on to the pagination bar's links.
+
+### Extended usage
+
+```twig
+{% set collection = page.find( '/other/_events' ).children %}
+{% set limit = 5 %}
+{% set ignore_url_param_array = [ 'event' ] %}
+{% do paginate( collection, limit, ignore_url_param_array ) %}
+```
+
+The above example is taken from http://ami-web.nl/events. This code creates a paginated collection with 5 items per page (the event summary list) which is presented together with an active event. The active event appears in only one of the summary pages. Consequently, the url parameter 'event' should be filtered out so it does not show up in the pagination bar's links, preventing inconsistencies with different page parameters. Any non listed url parameters (except the page parameter) are passed through unaffected. The requested page contains logic to pick a sensible default event.
+
+### Rendering the paginated collection
+
+The rest is identical to the standard procedure.
+
+```twig
+{% set collection = page.find('/other/_events').children %}
+{% set limit = 5 %}
+{% set ignore_url_param_array = ['event'] %}
+{% do paginate(collection, limit, ignore_url_param_array) %}
+```
+
+The above example is taken from http://ami-web.nl/events. This code creates a paginated collection with 5 items per page (the event summary list) which is presented together with an active event. The active event appears in only one of the summary pages. Consequently, the url parameter `event` should be filtered out so it does not show up in the pagination bar's links, preventing inconsistencies with different page parameters. Any non listed url parameters (except the page parameter) are passed through unaffected. The requested page contains logic to pick a sensible default event.
+
+## Rendering the paginated collection
+
+The rest is identical to the standard procedure:
+
+```twig
+{# create list of items #}
+{% for item in collection %}
+   ...
+{% endfor %}
+
+{# include the pagination bar #}
+{% if config.plugins.pagination.enabled and collection.params.pagination %}
+    {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+{% endif %}
+```
