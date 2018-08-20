@@ -1,5 +1,5 @@
 # v1.4.0
-## mm/dd/2017
+## 08/20/2018
 
 1. [](#new)
     * Added Twig pagination function [#22](https://github.com/getgrav/grav-plugin-pagination/pull/22)
