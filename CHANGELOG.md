@@ -1,3 +1,10 @@
+# v1.4.1
+## 08/28/2018
+
+1. [](#bugfix)
+    * Reverted Twig fix to address broken `url` in Twig [#34](https://github.com/getgrav/grav-plugin-pagination/issues/34)
+    * Removed duplicate README text [#30](https://github.com/getgrav/grav-plugin-pagination/issues/30)
+
 # v1.4.0
 ## 08/20/2018
 
