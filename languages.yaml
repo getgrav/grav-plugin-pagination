@@ -12,7 +12,7 @@ ru:
     BUILTIN_CSS: 'Использовать встроенный CSS'
     BUILTIN_CSS_HELP: 'Использовать CSS, предоставленный плагином Pagination'
 
-ul:
+uk:
   PLUGIN_PAGINATION:
     DELTA: 'Дельта'
     DELTA_HELP: 'Скільки сторінок відображатиметься ліворуч і праворуч від поточної сторінки'
