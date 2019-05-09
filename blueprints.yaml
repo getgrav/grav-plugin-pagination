@@ -1,5 +1,5 @@
 name: Pagination
-version: 1.4.1
+version: 1.4.2
 description: "**Pagination** is a very useful plugin to help navigate a large collection of pages, such as for a **blog**."
 icon: list-ol
 author:
@@ -28,16 +28,17 @@ form:
     delta:
         type: number
         size: x-small
-        label: Delta
+        label: PLUGIN_PAGINATION.DELTA
         default: 0
-        help: How many pages to show left and right of the current page
+        help: PLUGIN_PAGINATION.DELTA_HELP
         validate:
           type: number
           min: 0
 
     built_in_css:
       type: toggle
-      label: Use built in CSS
+      label: PLUGIN_PAGINATION.BUILTIN_CSS
+      help: PLUGIN_PAGINATION.BUILTIN_CSS_HELP
       highlight: 1
       default: 1
       options:

@@ -1,3 +1,10 @@
+# v1.4.2
+## 05/09/2019
+
+1. [](#new)
+    * Add active class for active page [#37](https://github.com/getgrav/grav-plugin-pagination/pull/37)
+    * Added `ru` and `uk` translations [#38](https://github.com/getgrav/grav-plugin-pagination/pull/38)
+
 # v1.4.1
 ## 08/28/2018
 

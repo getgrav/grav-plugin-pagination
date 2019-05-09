@@ -14,7 +14,7 @@
     {% for paginate in pagination %}
 
         {% if paginate.isCurrent %}
-            <li><span>{{ paginate.number }}</span></li>
+            <li><span class="active">{{ paginate.number }}</span></li>
         {% elseif paginate.isInDelta %}
             {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
             <li><a href="{{ url }}">{{ paginate.number }}</a></li>
