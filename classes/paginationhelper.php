@@ -98,6 +98,20 @@ class PaginationHelper extends Iterator
     }
 
     /**
+     * Return first url.
+     *
+     * @return string|null
+     */
+    public function firstUrl()
+    {
+        if (array_key_exists(1, $this->items)) {
+            return $this->items[1]->url;
+        }
+
+        return null;
+    }
+
+    /**
      * Return previous url.
      *
      * @return string|null
@@ -120,6 +134,20 @@ class PaginationHelper extends Iterator
     {
         if (array_key_exists($this->current +1, $this->items)) {
             return $this->items[$this->current +1]->url;
+        }
+
+        return null;
+    }
+
+    /**
+     * Return last url.
+     *
+     * @return string|null
+     */
+    public function lastUrl()
+    {
+        if (array_key_exists(count($this->items), $this->items)) {
+            return $this->items[count($this->items)]->url;
         }
 
         return null;
