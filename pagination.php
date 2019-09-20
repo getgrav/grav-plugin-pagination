@@ -2,7 +2,7 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Page\Collection;
-use Grav\Common\Page\Page;
+use Grav\Common\Page\Interfaces\PageInterface;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -63,7 +63,7 @@ class PaginationPlugin extends Plugin
      */
     public function onPageInitialized()
     {
-        /** @var Page $page */
+        /** @var PageInterface $page */
         $page = $this->grav['page'];
 
         if ($page && ($page->value('header.content.pagination') || $page->value('header.pagination'))) {
