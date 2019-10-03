@@ -5,10 +5,13 @@
 
 <ul class="pagination">
     {% if pagination.hasPrev %}
+        {% set url =  (base_url ~ pagination.params ~ pagination.firstUrl)|replace({'//':'/'}) %}
+        <li><a rel="prev" href="{{ url }}">&lt;&lt;</a></li>
         {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
-        <li><a rel="prev" href="{{ url }}">&laquo;</a></li>
+        <li><a rel="prev" href="{{ url }}">&lt;</a></li>
     {% else %}
-        <li><span>&laquo;</span></li>
+        <li><span>&lt;&lt;</span></li>
+        <li><span>&lt;</span></li>
     {% endif %}
 
     {% for paginate in pagination %}
@@ -25,9 +28,12 @@
     {% endfor %}
     {% if pagination.hasNext %}
         {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
-        <li><a rel="next" href="{{ url }}">&raquo;</a></li>
+        <li><a rel="next" href="{{ url }}">&gt;</a></li>
+        {% set url = (base_url ~ pagination.params ~ pagination.lastUrl)|replace({'//':'/'}) %}
+        <li><a rel="next" href="{{ url }}">&gt;&gt;</a></li>
     {% else %}
-        <li><span>&raquo;</span></li>
+        <li><span>&gt;</span></li>
+        <li><span>&gt;&gt;</span></li>
     {% endif %}
 </ul>
 
