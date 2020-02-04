@@ -10,6 +10,8 @@ homepage: https://github.com/getgrav/grav-plugin-pagination
 keywords: pagination, plugin, pages, navigation
 bugs: https://github.com/getgrav/grav-plugin-pagination/issues
 license: MIT
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
 
 form:
   validation: strict
