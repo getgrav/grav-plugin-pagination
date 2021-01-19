@@ -4,6 +4,8 @@ en:
     DELTA_HELP: 'How many pages to show left and right of the current page'
     BUILTIN_CSS: 'Use built in CSS'
     BUILTIN_CSS_HELP: 'Include the CSS provided by the Pagination plugin'
+    ADMIN_ACTIVE: 'Active in admin'
+    ADMIN_ACTIVE_HELP: 'Activate pagination functionality in admin'
 
 ru:
   PLUGIN_PAGINATION:
