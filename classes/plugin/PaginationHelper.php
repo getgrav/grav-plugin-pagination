@@ -122,6 +122,30 @@ class PaginationHelper extends Iterator
 
         return null;
     }
+    
+    /**
+     * Return the current page
+     */
+    public function currentPage()
+    {
+        return $this->current;
+    }
+    
+    /**
+     * Return the items per page
+     */
+    public function itemsPerPage()
+    {
+        return $this->items_per_page;
+    }
+    
+    /**
+     * Return the total number of pages
+     */
+    public function pageCount()
+    {
+        return $this->page_count;
+    }
 
     public function params()
     {
