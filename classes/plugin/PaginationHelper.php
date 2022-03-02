@@ -56,7 +56,7 @@ class PaginationHelper extends Iterator
         }
 
         $this->items_per_page = $params['limit'];
-        $this->page_count = intval(ceil($collection->count() / $this->items_per_page));
+        $this->page_count = (int)ceil($collection->count() / $this->items_per_page);
 
         for ($x=1; $x <= $this->page_count; $x++) {
             if ($x === 1) {
