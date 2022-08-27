@@ -5,6 +5,7 @@
     * Pass phpstan level 1 tests
     * Require Grav v1.6
     * Moved pagination classes under `Grav\Plugin\Pagination` namespace
+    * Removed extension to bring Twig function into Plugin class
 
 # v1.4.2
 ## 05/09/2019

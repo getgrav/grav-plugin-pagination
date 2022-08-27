@@ -7,8 +7,8 @@ use Grav\Common\Page\Interfaces\PageInterface;
 use Grav\Common\Plugin;
 use Grav\Plugin\Pagination\PaginationHelper;
 use Grav\Plugin\Pagination\PaginationPage;
-use Grav\Plugin\Pagination\PaginationTwigExtension;
 use RocketTheme\Toolbox\Event\Event;
+use Twig\TwigFunction;
 
 class PaginationPlugin extends Plugin
 {
@@ -52,7 +52,6 @@ class PaginationPlugin extends Plugin
 
         class_alias(PaginationHelper::class, 'Grav\\Plugin\\PaginationHelper');
         class_alias(PaginationPage::class, 'Grav\\Plugin\\PaginationPage');
-        class_alias(PaginationTwigExtension::class, 'Grav\\Plugin\\PaginationTwigExtension');
 
         $this->enable([
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
@@ -74,7 +73,10 @@ class PaginationPlugin extends Plugin
      */
     public function onTwigExtensions()
     {
-        $this->grav['twig']->twig->addExtension(new PaginationTwigExtension());
+         // Add Twig functions
+        $this->grav['twig']->twig()->addFunction(
+            new TwigFunction('paginate', [$this, 'paginateTwigFunction'])
+        );
     }
 
     /**
@@ -154,5 +156,10 @@ class PaginationPlugin extends Plugin
                 $collection->slice($start, $limit);
             }
         }
+    }
+
+    public function paginateTwigFunction($collection, $limit, $ignore_url_param_array = [])
+    {
+        $this->paginateCollection($collection, $limit, $ignore_url_param_array);
     }
 }
