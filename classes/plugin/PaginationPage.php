@@ -1,5 +1,5 @@
 <?php
-namespace Grav\Plugin;
+namespace Grav\Plugin\Pagination;
 
 use Grav\Common\Grav;
 

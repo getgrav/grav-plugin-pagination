@@ -1,5 +1,7 @@
 name: Pagination
-version: 1.4.2
+slug: pagination
+type: plugin
+version: 1.4.3
 description: "**Pagination** is a very useful plugin to help navigate a large collection of pages, such as for a **blog**."
 icon: list-ol
 author:
@@ -10,6 +12,8 @@ homepage: https://github.com/getgrav/grav-plugin-pagination
 keywords: pagination, plugin, pages, navigation
 bugs: https://github.com/getgrav/grav-plugin-pagination/issues
 license: MIT
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
 
 form:
   validation: strict

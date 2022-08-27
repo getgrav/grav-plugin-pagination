@@ -1,5 +1,5 @@
 <?php
-namespace Grav\Plugin;
+namespace Grav\Plugin\Pagination;
 
 use Grav\Common\Grav;
 use Grav\Common\Iterator;
@@ -22,8 +22,6 @@ class PaginationHelper extends Iterator
     public function __construct(Collection $collection)
     {
         parent::__construct();
-
-        require_once __DIR__ . '/paginationpage.php';
 
         $grav = Grav::instance();
 
