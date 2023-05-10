@@ -31,7 +31,7 @@ class PaginationHelper extends Iterator
         $this->current = $uri->currentPage();
 
         // get params
-        $url_params = explode('/', ltrim($uri->params(), '/'));
+        $url_params = explode('/', ltrim((string) $uri->params() ?: '', '/'));
 
         $params = $collection->params();
 
