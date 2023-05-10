@@ -1,5 +1,5 @@
 # v1.4.4
-## 09/10/2023
+## 05/10/2023
 
 1. [](#improved)
    * Fixed a deprecation error message for PHP 8.2+
