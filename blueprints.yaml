@@ -1,7 +1,7 @@
 name: Pagination
 slug: pagination
 type: plugin
-version: 1.4.3
+version: 1.4.4
 description: "**Pagination** is a very useful plugin to help navigate a large collection of pages, such as for a **blog**."
 icon: list-ol
 author:
