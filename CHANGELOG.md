@@ -1,3 +1,9 @@
+# v1.4.6
+## 02/05/2024
+
+1. [](#bugfix)
+   * Reverted fixes for an error in pagination URLs with system level Absolute URLs enabled. Will investigate [#60](https://github.com/getgrav/grav-plugin-pagination/issues/60) further
+
 # v1.4.5
 ## 02/03/2024
 
