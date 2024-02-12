@@ -50,3 +50,15 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+
+    admin_active:
+      type: toggle
+      label: PLUGIN_PAGINATION.ADMIN_ACTIVE
+      help: PLUGIN_PAGINATION.ADMIN_ACTIVE_HELP
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

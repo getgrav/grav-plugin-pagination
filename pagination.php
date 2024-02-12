@@ -45,7 +45,7 @@ class PaginationPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
-        if ($this->isAdmin()) {
+        if ($this->isAdmin() && !$this->config->get('plugins.pagination.admin_active', false)) {
             $this->active = false;
             return;
         }
